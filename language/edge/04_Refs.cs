@@ -14,18 +14,15 @@ namespace edge
         {
             int[] numbers = {1, 2, 3, 4, 5, 6};
 
-            int thirdElement = GetElementAt(numbers, 2);
             ref int thirdElementRef = ref GetElementAt(numbers, 2);
             thirdElementRef = 100;
 
-            // Please correct the following 3 statements to pass the test.
+            // Please correct the following 2 statements to pass the test.
             const int firstExpectation = default;
-            const int secondExpectation = default;
-            int[] thirdExpectation = { };
+            int[] secondExpectation = { };
             
             Assert.Equal(firstExpectation, numbers[2]);
-            Assert.Equal(secondExpectation, thirdElement);
-            Assert.Equal(thirdExpectation, numbers);
+            Assert.Equal(secondExpectation, numbers);
         }
 
         [Fact]
@@ -38,6 +35,20 @@ namespace edge
             int[] expect = { };
             
             Assert.Equal(expect, numbers);
+        }
+
+        [Fact]
+        public void should_treat_as_normal_by_val_return_if_not_marked_explicitly()
+        {
+            int[] numbers = {1, 2, 3, 4, 5, 6};
+            int value = GetElementAt(numbers, 2);
+
+            const int firstExpectation = default;
+            const int secondExpectation = default;
+            
+            Assert.Equal(firstExpectation, value);
+            value = 100;
+            Assert.Equal(secondExpectation, value);
         }
     }
 }
