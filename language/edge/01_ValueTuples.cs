@@ -19,17 +19,20 @@ namespace edge
             Assert.Equal("The student 'Harry' was born on 1990.", message);
         }
 
+        #pragma warning disable CS0219
         [Fact]
         [SuppressMessage("ReSharper", "UnusedVariable")]
         public void the_value_tuple_could_be_deconstructed()
         {
             (string, int) student = ("Harry", 1990);
             
-            // Please complete the following statement to pass the test.
+            // Please complete the following statement to pass the test, you should use `student`
+            // variable in the following line.
             string message = "";
             
             Assert.Equal("The student 'Harry' was born on 1990.", message);
         }
+        #pragma warning restore CS0219
 
         [Fact]
         [SuppressMessage("ReSharper", "UnusedVariable")]

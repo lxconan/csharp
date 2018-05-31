@@ -6,7 +6,7 @@ namespace edge
     {
         static ref int GetElementAt(int[] array, int index)
         {
-            return ref array[index];;
+            return ref array[index];
         }
         
         [Fact]
@@ -43,6 +43,7 @@ namespace edge
             int[] numbers = {1, 2, 3, 4, 5, 6};
             int value = GetElementAt(numbers, 2);
 
+            // Please correct the following 2 lines to pass the test.
             const int firstExpectation = default;
             const int secondExpectation = default;
             
