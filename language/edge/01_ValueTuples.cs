@@ -60,6 +60,8 @@ namespace edge
             Assert.Equal(expected, theType);
         }
 
+        #pragma warning disable CS0219
+        
         [Fact]
         [SuppressMessage("ReSharper", "UnusedVariable")]
         public void the_value_tuple_could_also_be_accessed_as_if_they_has_property()
@@ -72,6 +74,8 @@ namespace edge
             
             Assert.Equal("The student 'Harry' was born on 1990.", message);
         }
+        
+        #pragma warning restore CS0219
 
         [Fact]
         public void the_value_tuple_does_not_contains_properties_as_you_think()
