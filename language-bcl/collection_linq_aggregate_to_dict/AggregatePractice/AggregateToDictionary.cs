@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using Xunit;
 
-namespace LinqFacts
+namespace AggregatePractice
 {
     /* 
      * Description
@@ -129,7 +129,7 @@ namespace LinqFacts
             KeyValuePair<string, string> left = source.AggregateToDictionary(
                 item => item,
                 item => item,
-                StringComparer.OrdinalIgnoreCase,
+                comparer,
                 true).Single();
 
             Assert.Equal(new KeyValuePair<string, string>("Nancy", "nAnCy"), left);

@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Xunit;
 
-namespace LinqFacts
+namespace AggreatePractice
 {
     /* 
      * Description

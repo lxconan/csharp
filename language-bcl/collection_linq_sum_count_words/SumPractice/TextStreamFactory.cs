@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace LinqFacts.Helpers
+namespace SumPractice
 {
     static class TextStreamFactory
     {

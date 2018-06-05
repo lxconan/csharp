@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using LinqFacts.Helpers;
 using Xunit;
 
-namespace LinqFacts
+namespace MaxPractice
 {
     /* 
      * Description
