@@ -8,6 +8,8 @@ namespace basic
     public class EventsRelated
     {
         [Fact]
+        [SuppressMessage("ReSharper", "ConvertToLocalFunction", 
+            Justification = "We will not cover csharp 7 here")]
         public void event_is_subset_of_delegate_with_event_handler_type()
         {
             var demoObject = new BasicEventDemoClass();
