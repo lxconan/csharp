@@ -1,45 +1,32 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace ExpressionEval
 {
     class InfixToPostfixEvaluator
     {
+        [SuppressMessage("ReSharper", "UnusedVariable")]
         public string[] Evaluate(string[] expression)
         {
             object[] tokens = Tokenize(expression);
-            var result = new List<string>();
-            var operatorStack = new Stack<Operator>();
-
-            foreach (object token in tokens)
-            {
-                if (token is Operand)
-                {
-                    result.Add(token.ToString());
-                }
-                else if (token is Operator)
-                {
-                    var @operator = (Operator)token;
-                    while (operatorStack.Count > 0 && operatorStack.Peek().Priority >= @operator.Priority) 
-                    {
-                        Operator topOperator = operatorStack.Pop();
-                        result.Add(topOperator.ToString());
-                    }
-
-                    operatorStack.Push(@operator);
-                }
-            }
-
-            while (operatorStack.Count > 0)
-            {
-                result.Add(operatorStack.Pop().ToString());
-            }
-
-            return result.ToArray();
+            
+            // TODO: Please implement the method to pass all the test. The existing code can help you.
+            //
+            // The algorithms to convert an infix expression to a postfix expression is as follows.
+            // Note that we only support +, -, *, / operators and we only support integers.
+            //
+            // For each token in expression:
+            // 
+            // * When we get a operand, we just output it
+            // * When we get an operator `o`, pop the top element in the stack until there is no
+            //   operator having higher or equal priority than `o`. Then push the `o` into the stack.
+            // * When the expression is ended. Pop all the operators in the stack.
+            throw new NotImplementedException();
         }
 
-        static object[] Tokenize(string[] expression)
+        static object[] Tokenize(IEnumerable<string> expression)
         {
             object[] tokens = expression
                 .Select(TokenFactory.Create)
@@ -56,7 +43,7 @@ namespace ExpressionEval
                 .FirstOrDefault(token => !(token is Operand));
             if (invalidOperand != null) 
             {
-                throw new ArgumentException($"Syntax error found at \'{invalidOperand.ToString()}\'");
+                throw new ArgumentException($"Syntax error found at \'{invalidOperand}\'");
             }
 
             object invalidOperator = tokens
@@ -64,7 +51,7 @@ namespace ExpressionEval
                 .FirstOrDefault(token => !(token is Operator));
             if (invalidOperator != null)
             {
-                throw new ArgumentException($"Syntax error found at \'{invalidOperator.ToString()}\'");
+                throw new ArgumentException($"Syntax error found at \'{invalidOperator}\'");
             }
         }
     }

@@ -1,9 +1,11 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ExpressionEval
 {
     class Operand
     {
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "It will be used later")] 
         public int Value { get; }
 
         public Operand(string value)

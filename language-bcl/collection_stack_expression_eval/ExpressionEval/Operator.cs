@@ -1,14 +1,19 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ExpressionEval
 {
     class Operator
     {
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "It will be used later")] 
         public string Name { get; }
+        
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "It will be used later")]
+        [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "It will be used later")]
         public int Priority { get; }
 
-        private Operator(string name, int priority)
+        Operator(string name, int priority)
         {
             Name = name;
             Priority = priority;
