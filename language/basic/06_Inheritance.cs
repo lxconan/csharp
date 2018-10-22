@@ -14,7 +14,7 @@ namespace basic
             var demoClass = new InheritMemberAccessDemoClass();
 
             // please change the variable value to fix the test.
-            const string expected = "";
+            const string expected = "Public Property Value";
 
             Assert.Equal(expected, demoClass.PublicProperty);
         }
@@ -27,7 +27,7 @@ namespace basic
             string actualValue = demoClass.ManipulateProtectedMember();
 
             // please change the variable value to fix the test.            
-            const string expected = "";
+            const string expected = "The value is Protected Property Value";
 
             Assert.Equal(expected, actualValue);
         }
@@ -41,7 +41,7 @@ namespace basic
             string actualValue = castToBaseClass.VirtualMethod();
 
             // please change the variable value to fix the test.
-            const string expected = "";
+            const string expected = "DerivedClass";
 
             Assert.Equal(expected, actualValue);
         }
@@ -58,7 +58,7 @@ namespace basic
             bool isNull = castToBaseClass == null;
 
             // please change the variable value to fix the test.
-            const bool expected = true;
+            const bool expected = false;
 
             Assert.Equal(expected, isNull);
         }
@@ -76,7 +76,7 @@ namespace basic
             bool isNull = castResult == null;
 
             // please change the variable value to fix the test.
-            const bool expected = false;
+            const bool expected = true;
 
             Assert.Equal(expected, isNull);
         }
@@ -88,7 +88,7 @@ namespace basic
             object castToObject = demoClass;
 
             // please change the variable value to fix the test.
-            Type expectedExceptionType = typeof(ArgumentException);
+            Type expectedExceptionType = typeof(InvalidCastException);
 
             Assert.NotEqual(typeof(SystemException), expectedExceptionType);
             Assert.NotEqual(typeof(Exception), expectedExceptionType);
@@ -105,7 +105,7 @@ namespace basic
             bool referenceEqual = ReferenceEquals(demoClass, castToBaseClass);
 
             // please change the variable value to fix the test.
-            const bool expected = false;
+            const bool expected = true;
 
             Assert.Equal(expected, referenceEqual);
         }
@@ -116,7 +116,7 @@ namespace basic
             var demoClassBase = new PolymorphismDemoClassBase();
 
             // please change the variable value to fix the test.
-            Type expectedExceptionType = typeof(ArgumentException);
+            Type expectedExceptionType = typeof(InvalidCastException);
 
             Assert.NotEqual(typeof(SystemException), expectedExceptionType);
             Assert.NotEqual(typeof(Exception), expectedExceptionType);
@@ -134,8 +134,9 @@ namespace basic
             string baseClassMethodReturnValue = castedToBaseClass.MethodToHide();
 
             // please change the following 2 variable values to fix the test.
-            const string expectedMethodReturnValue = "";
-            const string expectedBaseClassMethodReturnValue = "";
+            // same behavior w/o "new"
+            const string expectedMethodReturnValue = "HideMemberDemoClass::MethodToHide()";
+            const string expectedBaseClassMethodReturnValue = "HideMemberDemoClassBase::MethodToHide()";
 
             Assert.Equal(expectedMethodReturnValue, methodReturnValue);
             Assert.Equal(expectedBaseClassMethodReturnValue, baseClassMethodReturnValue);
@@ -149,7 +150,8 @@ namespace basic
             string name = demoClass.Name;
 
             // please change the variable value to fix the test.
-            const string expected = "";
+            //must have "base" to use base class attribute?
+            const string expected = "BaseClass's derived class.";
 
             Assert.Equal(expected, name);
         }
@@ -162,7 +164,7 @@ namespace basic
             string message = demoClass.ConstructorCallMessage;
 
             // please change the variable value to fix the test.
-            const string expected = "";
+            const string expected = "InheritanceConstructorCallDemoClassBase::Ctor()\r\nInheritanceConstructorCallDemoClass::Ctor()\r\n";
 
             Assert.Equal(expected, message);
         }
@@ -175,7 +177,7 @@ namespace basic
             string message = demoClass.ConstructorCallMessage;
 
             // please change the variable value to fix the test.
-            const string expected = "";
+            const string expected = "InheritanceConstructorCallDemoClassBase::Ctor()\r\nInheritanceConstructorCallDemoClass::Ctor(int)\r\n";
 
             Assert.Equal(expected, message);
         }
@@ -188,7 +190,7 @@ namespace basic
             string message = demoClass.ConstructorCallMessage;
 
             // please change the variable value to fix the test.
-            const string expected = "";
+            const string expected = "InheritanceConstructorCallDemoClassBase::Ctor(int)\r\nInheritanceConstructorCallDemoClass::Ctor(string)\r\n";
 
             Assert.Equal(expected, message);
         }
@@ -201,7 +203,7 @@ namespace basic
             string message = demoClass.ConstructorCallMessage;
 
             // please change the variable value to fix the test.
-            const string expected = "";
+            const string expected = "InheritanceConstructorCallDemoClassBase::Ctor()\r\nInheritanceConstructorCallDemoClass::Ctor(int)\r\nInheritanceConstructorCallDemoClass::Ctor(int, string)\r\n";
 
             Assert.Equal(expected, message);
         }
@@ -212,15 +214,15 @@ namespace basic
             var demoClass = new MethodOverloadDemoClass();
 
             string returnValueForBaseClassOverloading = 
-                demoClass.Foo(new MethodOverloadBaseClass());
+                demoClass.Foo(new MethodOverloadBaseClass()); //Foo(MethodOverloadBaseClass)
             string returnValueForDerivedClassOverloading =
-                demoClass.Foo(new MethodOverloadDerivedClass());
+                demoClass.Foo(new MethodOverloadDerivedClass());//Foo(MethodOverloadDerivedClass)
             string returnValueForCastingOverloading =
-                demoClass.Foo((MethodOverloadBaseClass) (new MethodOverloadDerivedClass()));
+                demoClass.Foo((MethodOverloadBaseClass) (new MethodOverloadDerivedClass()));//Foo(MethodOverloadBaseClass)
 
-            const string expectedBaseClassOverloadingValue = "";
-            const string expectedDerivedClassOverloadingValue = "";
-            const string expectedCastOverloadingValue = "";
+            const string expectedBaseClassOverloadingValue = "Foo(MethodOverloadBaseClass)";
+            const string expectedDerivedClassOverloadingValue = "Foo(MethodOverloadDerivedClass)";
+            const string expectedCastOverloadingValue = "Foo(MethodOverloadBaseClass)";
 
             Assert.Equal(expectedBaseClassOverloadingValue, returnValueForBaseClassOverloading);
             Assert.Equal(expectedDerivedClassOverloadingValue, returnValueForDerivedClassOverloading);

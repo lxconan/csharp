@@ -95,8 +95,8 @@ namespace basic
                 // add property initialization logic here.
             };
 
-            const string expectedProperty1 = "property1.1";
-            const string expectedProperty2 = "property2.1";
+            const string expectedProperty1 = "property1";
+            const string expectedProperty2 = null;
 
             Assert.Equal(expectedProperty1, demoClass.Property1);
             Assert.Equal(expectedProperty2, demoClass.Property2);
@@ -111,7 +111,7 @@ namespace basic
             demoClass.Name = "My Name";
 
             // please change variable value to correct one.
-            const string expected = "";
+            const string expected = "My Name";
 
             Assert.Equal(expected, demoClass.Name);
         }
@@ -125,7 +125,7 @@ namespace basic
             demoClass.Name = "My Name";
 
             // please change variable value to correct one.
-            const string expected = "";
+            const string expected = "Your Name Is My Name";
 
             Assert.Equal(expected, demoClass.Name);
         }
@@ -138,7 +138,7 @@ namespace basic
             string indexerValue = demoClass[2];
 
             // please change variable value to correct one.
-            const string expected = "";
+            const string expected = "You are accessing indexer 2";
 
             Assert.Equal(expected, indexerValue);
         }
@@ -151,7 +151,7 @@ namespace basic
             string indexerValue = demoClass["stringArgument"];
 
             // please change variable value to correct one.
-            const string expected = "";
+            const string expected = "You are accessing indexer stringArgument";
 
             Assert.Equal(expected, indexerValue);
         }
@@ -164,7 +164,7 @@ namespace basic
             string indexerValue = demoClass[1, "Hello"];
 
             // please change variable value to correct one.
-            const string expected = "";
+            const string expected = "You are accessing indexer with first argument 1 and second argument Hello";
 
             Assert.Equal(expected, indexerValue);
         }
@@ -175,7 +175,7 @@ namespace basic
             string staticFieldValue = StaticConstructorDemoClass.StaticField;
 
             // please change variable value to correct one.
-            const string expected = "";
+            const string expected = "You are so cute!";
 
             Assert.Equal(expected, staticFieldValue);
         }
@@ -190,7 +190,7 @@ namespace basic
             }
 
             // please change variable value to correct one.
-            const bool expected = default(bool);
+            const bool expected = true;
 
             Assert.Equal(expected, disposable.IsDisposed);
         }
@@ -207,7 +207,7 @@ namespace basic
             string name = demoClass.ToString();
 
             // please change variable value to correct one.
-            const string expected = "";
+            const string expected = "Mr. Hall";
 
             Assert.Equal(expected, name);
         }

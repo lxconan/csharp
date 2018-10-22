@@ -39,9 +39,6 @@ namespace basic
         {
             // change "typeof(string)" to correct type.
             Type guessTheType = typeof (int);
-            //float a = 100000004;
-            //int b = (int)a;
-            //Assert.Equal(100000010,a);
 
             Assert.Equal(guessTheType, 1.GetType());
             Assert.Equal(guessTheType, 0x123.GetType());
@@ -80,7 +77,7 @@ namespace basic
             long longNumber = originNumber;
 
             // change "default(long)" to correct value.
-            const long expectedResult = 12345L;
+            const long expectedResult = 12345;
 
             Assert.Equal(expectedResult, longNumber);
         }
@@ -92,7 +89,7 @@ namespace basic
             var shortNumber = (short) originNumber;
 
             // change "default(short)" to correct value.
-            //12345=1100000_0111001 < 2;15-1
+            //12345=11_0000_0011_1001 < 2^15-1
             const short expectedResult = 12345;
 
             Assert.Equal(expectedResult, shortNumber);
@@ -104,22 +101,25 @@ namespace basic
             int originNumber = 0x1234;
             var byteNumber = (byte) originNumber;
 
-            //0x1234=0001001000110100 > 2;8-1
+            //0x1234=0001_0010_0011_0100 > 2^8-1
             // change "default(byte)" to correct value.
-            const byte expectedResult = (byte)(4660-256*18);
-
+            const byte expectedResult = (byte)(0x34);
+            0xffffffff.GetType();
             Assert.Equal(expectedResult, byteNumber);
+            Assert.Equal(typeof(uint),0xffffffff.GetType());
         }
 
         [Fact]
         public void should_never_count_on_integer_floating_number_casting()
         {
-            int originalNumber = 100000001;
+            int originalNumber = 100000004;
             float floatingPointNumber = originalNumber;
             var castedBackNumber = (int) floatingPointNumber;
-
-            //100000001~1*10:8+0.0000000
-            //100000005~1*10;8+0.0000001
+            
+            //when int < 2^24+1, it could be casted to float with out losing value
+            //1,8,23
+            //101111101110101000100000001
+            //1.01111101110101000100000|001*2^26
             // change "default(int)" to correct value.
             const int expectedResult = 100000000;
 
@@ -214,17 +214,21 @@ namespace basic
         {
             // change "default(int)" to correct value. You should use Hex representation.
             //+1 ~
-            const int expectedResult = -0x10;
+            const int expectedResult = unchecked ((int)0xFFFFFFF0);
 
-            Assert.Equal(expectedResult, ~0xf);
+            Assert.Equal(expectedResult, ~0x0000000f);
         }
 
+        [Fact]
+        public void shoud_get_typeof_complement_operation()
+        {
+            Assert.Equal(typeof(int), (~0xf).GetType());
+        }
         [Fact]
         public void should_do_and_operation()
         {
             // change "default(int)" to correct value. You should use Hex representation.
             const int expectedResult = 0x30;
-            //11110000&00110011
             Assert.Equal(expectedResult, (0xf0 & 0x33));
         }
 
@@ -271,8 +275,8 @@ namespace basic
             const short anotherShortNumber = 1;
             const sbyte sbyteNumber = 1;
             const sbyte anothenSbyteNumber = 1;
-            const double floatNumber = 1;
-            const double anotherFloatNumber = 1;
+            const float floatNumber = 1;
+            const float anotherFloatNumber = 1;
 
             Type arithmeticOperatorResultType = (shortNumber + anotherShortNumber).GetType();
             Type anotherArithmeticOperatorResultType = (sbyteNumber + anothenSbyteNumber).GetType();
@@ -281,7 +285,7 @@ namespace basic
             // change "typeof(short)" to correct type.
             Type expectedResult = typeof(int);
             Type anotherExpectedResult = typeof(int);
-            Type thirdExpectedResult = typeof(double);
+            Type thirdExpectedResult = typeof(float);
 
             Assert.Equal(expectedResult, arithmeticOperatorResultType);
             Assert.Equal(anotherExpectedResult, anotherArithmeticOperatorResultType);

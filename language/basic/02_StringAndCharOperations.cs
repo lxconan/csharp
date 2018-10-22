@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
+using basic.Common;
 using Xunit;
 
 namespace basic
@@ -43,7 +44,6 @@ namespace basic
         {
             string originalString = "Original String";
             string replacement = originalString.Replace("Str", "W");
-            originalString = "Original Wing";
 
             // change "" in the following 2 lines to correct values.
             const string expectedOrignalString = "Original String";
@@ -96,11 +96,56 @@ namespace basic
             const string inDifferentCase = "oRiginal String";
 
             // change the variable values in the following 2 lines.
-            var caseSensitiveComparison = StringComparison.InvariantCulture;
-            var caseInsensitiveComparison = StringComparison.InvariantCultureIgnoreCase;
+            var caseSensitiveComparison = StringComparison.Ordinal;
+            var caseInsensitiveComparison = StringComparison.OrdinalIgnoreCase;
 
             Assert.False(originalString.Equals(inDifferentCase, caseSensitiveComparison));
             Assert.True(originalString.Equals(inDifferentCase, caseInsensitiveComparison));
         }
+
+        [Fact]
+        public void should_return_one_row_when_start_equals_end()
+        {
+            int start = 1;
+            int end = 1;
+            string expectedString = "1 * 1 = 1 " + Environment.NewLine;
+
+            Assert.Equal(expectedString, Mutiplication.MutiplicationTable(start, end));
+        }
+
+        [Fact]
+        public void should_return_more_rows_when_start_less_than_end()
+        {
+            int start = 2;
+            int end = 5;
+            string expectedString =
+                "2 * 2 = 4  " + Environment.NewLine +
+                "2 * 3 = 6  3 * 3 = 9  " + Environment.NewLine +
+                "2 * 4 = 8  3 * 4 = 12 4 * 4 = 16 " + Environment.NewLine +
+                "2 * 5 = 10 3 * 5 = 15 4 * 5 = 20 5 * 5 = 25 " + Environment.NewLine;
+
+            Assert.Equal(expectedString, Mutiplication.MutiplicationTable(start, end));
+        }
+
+        [Fact]
+        public void should_return_empty_string_when_start_bigger_than_end()
+        {
+            int start = 2;
+            int end = 1;
+            string expectedString = "";
+
+            Assert.Equal(expectedString, Mutiplication.MutiplicationTable(start, end));
+        }
+
+        [Fact]
+        public void should_return_correct_value_for_very_large_number()
+        {
+            int start = int.MaxValue;
+            int end = int.MaxValue;
+            string expectedString = $"{start} * {end} = 4611686014132420609 " + Environment.NewLine;
+
+            Assert.Equal(expectedString, Mutiplication.MutiplicationTable(start, end));
+        }
+
     }
 }

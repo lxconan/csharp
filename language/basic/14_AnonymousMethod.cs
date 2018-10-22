@@ -33,7 +33,7 @@ namespace basic
             int transformResult = doubleTransform(2);
 
             // change variable value to fix test.
-            const int expectedResult = default(int);
+            const int expectedResult = 4;
 
             Assert.Equal(expectedResult, transformResult);
         }

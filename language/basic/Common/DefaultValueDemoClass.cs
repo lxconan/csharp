@@ -4,5 +4,6 @@
     {
         public RefTypeClass referenceTypeValue;
         public int valueTypeValue;
+        public string stringValue;
     }
 }

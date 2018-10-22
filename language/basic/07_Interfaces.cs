@@ -19,8 +19,8 @@ namespace basic
             string duckTalk = castToTalkable.Talk();
 
             // change the variable values for the following 2 lines to fix the test.
-            const string expectedDuckPosition = "";
-            const string expectedTalk = "";
+            const string expectedDuckPosition = "You are at (2, 3)";
+            const string expectedTalk = "Ga, ga, ...";
 
             Assert.Equal(expectedDuckPosition, duckPosition);
             Assert.Equal(expectedTalk, duckTalk);
@@ -36,7 +36,7 @@ namespace basic
                 new[] {typeof(string)});
 
             // change the variable value to fix the test.
-            const bool expectedHasWriteMethod = true;
+            const bool expectedHasWriteMethod = false;
 
             Assert.Equal(expectedHasWriteMethod, hasWriteMethod);
         }
@@ -51,7 +51,7 @@ namespace basic
             var readResult = readOnlyStreamWithWriteExplicitlyImpl.Read();
 
             // change the variable value to fix the test.
-            const string expectedReadResult = "";
+            const string expectedReadResult = "Hehe";
 
             Assert.Equal(expectedReadResult, readResult);
         }

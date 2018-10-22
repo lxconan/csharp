@@ -4,6 +4,10 @@
     {
         internal class NestedType
         {
+            internal class NestedNestedType
+            {
+
+            }
         }
     }
 }
