@@ -1,10 +1,12 @@
-﻿using Xunit;
+﻿using System.Diagnostics.CodeAnalysis;
+using Xunit;
 
 namespace edge
 {
     public class DiscardsFacts
     {
         [Fact]
+        [SuppressMessage("ReSharper", "ConvertToConstant.Local")]
         public void a_crazy_discard_test_you_will_like()
         {
             int _ = 0xABCD;

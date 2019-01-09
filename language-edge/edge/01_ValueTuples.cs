@@ -36,7 +36,7 @@ namespace edge
 
         [Fact]
         [SuppressMessage("ReSharper", "UnusedVariable")]
-        public void the_value_tple_could_be_deconstructed_with_meaningful_variables()
+        public void the_value_tuple_could_be_deconstructed_with_meaningful_variables()
         {
             (string name, int yearOfBirth) = ("Harry", 1990);
             
