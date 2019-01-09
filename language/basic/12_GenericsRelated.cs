@@ -138,5 +138,18 @@ namespace basic
 
             Assert.Equal(expectedValue, contravariantDemoObject.Get());
         }
+
+        [Fact]
+        public void should_choose_exact_match_for_overloaded_method()
+        {
+            var demo = new GenericOverloadingMethodDemo();
+            string returnValue = demo.Call(new GenericOverloadingMethodDemo.Giraffe());
+            
+            // please write down the correct value. You cannot change the signature of
+            // the variable
+            const string expected = null;
+            
+            Assert.Equal(expected, returnValue);
+        }
     }
 }
