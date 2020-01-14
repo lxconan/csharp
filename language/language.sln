@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "basic", "basic\basic.csproj", "{92B59E5F-FD8B-4675-8717-F80CE2F544DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basic.NumberOperation", "Basic.NumberOperation\Basic.NumberOperation.csproj", "{54F20709-5B27-42D0-B6B5-5920AB4CABE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{92B59E5F-FD8B-4675-8717-F80CE2F544DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92B59E5F-FD8B-4675-8717-F80CE2F544DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92B59E5F-FD8B-4675-8717-F80CE2F544DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54F20709-5B27-42D0-B6B5-5920AB4CABE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F20709-5B27-42D0-B6B5-5920AB4CABE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F20709-5B27-42D0-B6B5-5920AB4CABE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F20709-5B27-42D0-B6B5-5920AB4CABE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
